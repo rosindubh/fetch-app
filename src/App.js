@@ -6,8 +6,8 @@ class App extends react.Component {
     data: []
   }
 
-handleFetch = () => {
-  const response = fetch("https://api.adviceslip.com/advice")
+handleFetch = async () => {
+  const response = await fetch("https://api.adviceslip.com/advice")
   console.log(response)
 }
 
