@@ -2,8 +2,22 @@ import react from 'react';
 import './App.css';
 
 class App extends react.Component {
+  state ={
+    data: []
+  }
+
+handleFetch = () => {
+  const response = fetch("https://api.adviceslip.com/advice")
+  console.log(response)
+}
+
   render() {
-    return <h1>hello</h1>
+    return (
+      <div>
+        <h1>hello there</h1>
+        <button onClick={this.handleFetch}>get data</button>
+      </div>
+    )
   }
 }
 
