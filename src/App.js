@@ -8,7 +8,8 @@ class App extends react.Component {
 
 handleFetch = async () => {
   const response = await fetch("https://api.adviceslip.com/advice")
-  console.log(response)
+  const data = await response.json()
+  console.log(data)
 }
 
   render() {
