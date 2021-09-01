@@ -1,7 +1,7 @@
-import react from 'react';
+import React from 'react';
 import './App.css';
 
-class App extends react.Component {
+class App extends React.Component {
   state ={
     data: []
   }
