@@ -4,7 +4,8 @@ import './App.css';
 class App extends React.Component {
   state ={
     data: [],
-    loading: true
+    loading: true,
+    error: false
   }
 
 handleFetch = async () => {
@@ -17,6 +18,7 @@ handleFetch = async () => {
   this.setState({ data: data.slip  })
   } catch (error){
       console.log(error)
+      this.setState({error: true})
   }
 }
 componentDidMount() {
@@ -33,9 +35,11 @@ componentDidUpdate () {
 }
 
   render() {
-    const { data, loading } = this.state
-
-    if(loading) {
+    const { data, loading, error } = this.state
+    if(error) {
+      return <h1>There was an error...</h1>
+    }
+    else if(loading) {
       return<h1>loading...</h1>
     }
     return (
