@@ -36,6 +36,7 @@ componentDidUpdate () {
 
   render() {
     const { data, loading, error } = this.state
+    
     if(error) {
       return <h1>There was an error...</h1>
     }

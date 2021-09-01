@@ -1,4 +1,5 @@
 import { useState } from "react"
+import { useEffect } from "react"
 
 const App = () => {
     const [data, setData] = useState([])
@@ -19,6 +20,10 @@ const App = () => {
             setError(true)
         }
     }
+    //useEffect does the same job as componentDidMount and componentDidUpdate combined
+    useEffect(() => {
+        handleFetch()
+    },[])
 
     if(error) {
         return <h1>There was an error...</h1>
