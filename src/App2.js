@@ -33,7 +33,7 @@ const App = () => {
       }
       return (
         <div>
-          <h1>hello there</h1>
+          <h1>This is App2.js</h1>
           <h3>{ data.advice }</h3>
           <button onClick={handleFetch}>get data</button>
         </div>

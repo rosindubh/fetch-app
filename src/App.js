@@ -36,7 +36,7 @@ componentDidUpdate () {
 
   render() {
     const { data, loading, error } = this.state
-    
+
     if(error) {
       return <h1>There was an error...</h1>
     }
@@ -45,7 +45,7 @@ componentDidUpdate () {
     }
     return (
       <div>
-        <h1>hello there</h1>
+        <h1>This is App.js</h1>
         <h3>{ data.advice }</h3>
         <button onClick={this.handleFetch}>get data</button>
       </div>
