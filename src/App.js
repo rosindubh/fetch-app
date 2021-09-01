@@ -8,12 +8,17 @@ class App extends React.Component {
   }
 
 handleFetch = async () => {
+  try{
   const response = await fetch("https://api.adviceslip.com/advice")
+  if (response.status !== 200) {
+    throw new Error(`${response.status} Error`)
+  }
   const data = await response.json()
-  //console.log(data)
   this.setState({ data: data.slip  })
+  } catch (error){
+      console.log(error)
+  }
 }
-
 componentDidMount() {
   this.handleFetch()
   setTimeout(() => {
