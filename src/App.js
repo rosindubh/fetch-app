@@ -1,5 +1,7 @@
 import React from 'react';
 import './App.css';
+import './components/AboutUs'
+import './components/ContactUs'
 
 class App extends React.Component {
   state ={
@@ -53,4 +55,4 @@ componentDidUpdate () {
   }
 }
 
-// export default App;
+export default App;
