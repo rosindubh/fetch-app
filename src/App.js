@@ -52,4 +52,4 @@ componentDidUpdate () {
   }
 }
 
-export default App;
+// export default App;
