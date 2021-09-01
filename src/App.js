@@ -1,7 +1,10 @@
 import React from 'react';
+import {Link, Route, BrowserRouter as Router, Switch} from 'react-router-dom';
+
 import './App.css';
-import './components/AboutUs'
-import './components/ContactUs'
+import Home from './components/Home';
+import AboutUs from './components/AboutUs';
+import ContactUs from './components/ContactUs';
 
 class App extends React.Component {
   state ={
@@ -12,12 +15,12 @@ class App extends React.Component {
 
 handleFetch = async () => {
   try{
-  const response = await fetch("https://api.adviceslip.com/advice")
-  if (response.status !== 200) {
-    throw new Error(`${response.status} Error`)
-  }
-  const data = await response.json()
-  this.setState({ data: data.slip  })
+    const response = await fetch("https://api.adviceslip.com/advice")
+    if (response.status !== 200) {
+      throw new Error(`${response.status} Error`)
+    }
+    const data = await response.json()
+    this.setState({ data: data.slip, loading: false})
   } catch (error){
       console.log(error)
       this.setState({error: true})
@@ -37,7 +40,7 @@ componentDidUpdate () {
 }
 
   render() {
-    const { data, loading, error } = this.state
+    const { loading, error } = this.state
 
     if(error) {
       return <h1>There was an error...</h1>
@@ -46,11 +49,35 @@ componentDidUpdate () {
       return<h1>loading...</h1>
     }
     return (
+      <Router>
+        <div>
+          <nav>
+            <ul>
+              <Link to='/'>Home</Link>
+            </ul>
+            <ul>
+              <Link to='/aboutus'>AboutUs</Link>
+            </ul>
+            <ul>
+              <Link to='/contactus'>ContactUs</Link>
+            </ul>
+          </nav>
+        </div>
+        <Switch>
+          <Route path='/aboutus'>
+            <AboutUs />
+          </Route>
+          <Route path='/contactus'>
+            <ContactUs />
+          </Route>
+          <Route path='/'>
+            <Home data={this.state.data} handleFetch={this.handleFetch} />
+          </Route>
+        </Switch>
       <div>
-        <h1>This is App.js</h1>
-        <h3>{ data.advice }</h3>
-        <button onClick={this.handleFetch}>get data</button>
+
       </div>
+      </Router>
     )
   }
 }
