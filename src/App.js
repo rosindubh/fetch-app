@@ -13,12 +13,22 @@ handleFetch = async () => {
   this.setState({ data: data.slip  })
 }
 
+componentDidMount() {
+  this.handleFetch()
+  console.log("component did mount")
+}
+
+componentDidUpdate () {
+  console.log("component did update")
+}
+
+
   render() {
     const { data } = this.state
     return (
       <div>
         <h1>hello there</h1>
-        <h3>{data.advice}</h3>
+        <h3>{ data.advice ? data.advice : "loading..."}</h3>
         <button onClick={this.handleFetch}>get data</button>
       </div>
     )
